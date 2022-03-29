@@ -14,11 +14,12 @@
 
 @section('content')
 <div class="container">
-  <form action="" class="form">
+  <form action="{{route('post.store')}}" method="POST" class="form" enctype="multipart/form-data">
     @csrf 
     <div class="form-group">
       <h3>Create New Post</h3>
     </div>
+    @include('partials._message')
     <div class="form-group mt-4">
       <label for="" class="form-label">Post Title</label>
       <input type="text" name="title" class="form-control">
@@ -29,7 +30,7 @@
     </div>
     <div class="form-group mt-4">
       <label for="" class="form-label">Post Title</label>
-      <input type="file" name="post_img">
+      <input type="file" name="post_img" >
     </div>
       <div class="form-group mt-4">
         <label for="" class="form-label">Select Category</label>
@@ -41,7 +42,7 @@
       </select>
       </div>
     <div class="form-group mt-4">
-      <textarea name="" id="mytextarea" cols="30" class="form-control" rows="10"></textarea>
+      <textarea name="body" id="mytextarea" cols="30" class="form-control" rows="10"></textarea>
     </div>
     <div class="form-group mt-3">
       <button class="btn btn-success">Post</button>

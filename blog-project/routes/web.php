@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\PostController;
+use App\Http\Controllers\InteractionController;
+use App\Http\Controllers\PublicPagesController;
 use App\Models\dashboard\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +32,12 @@ Route::post('/dashboard/category/update/{categoryid}', [CategoryController::clas
 
 //POST ROUTES
 Route::get('/dashboard/post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('/dashboard/post/create', [PostController::class, 'store'])->name('post.store');
 
+Route::get('/', [ PublicPagesController::class, 'posts'])->name('posts.public');
+Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.show');
+Route::post('/comment', [InteractionController::class, 'storeComment'])->name('comment')->middleware(['auth']);
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
