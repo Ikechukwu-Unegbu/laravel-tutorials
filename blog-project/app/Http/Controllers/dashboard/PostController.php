@@ -3,19 +3,31 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\dashboard\Category;
 use Illuminate\Http\Request;
 use App\Models\dashboard\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
     public function index(){
+
         return view('dashboard.posts.index');
     }
 
     public function create(){
+       
+        $user = User::find(Auth::user()->id);
+        if (Gate::allows('not-user', $user)) {
+            abort(403);
+        }
+        
+
         $categories = Category::all();
         return view('dashboard.posts.create')->with('categories', $categories);
     }
@@ -62,7 +74,10 @@ class PostController extends Controller
 
     public function show($slug){
         $post = Post::where('slug', '=', $slug)->first();
+        $comments = Comment::where('post_id', '=', $post->id)->get();
 
-        return view('pages.posts.show')->with('post', $post);
+        return view('pages.posts.show')
+                            ->with('post', $post)
+                            ->with('comments', $comments);
     }
 }

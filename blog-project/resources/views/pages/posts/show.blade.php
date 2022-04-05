@@ -24,6 +24,15 @@
     </div>
     <button class="btn btn-primary mb-5" style="float: right;">Comment</button>
   </form>
+  <div class="mt-3">
+    <h5>Comments</h5>
+    @foreach($comments as $com)
+      <div class="single_comment mt-4">
+        <div>{{$com->comment}}</div>
+        <small>by: {{$com->user->name}}</small>
+      </div>
+    @endforeach
+  </div>
 </div>
 </div>
 @endsection

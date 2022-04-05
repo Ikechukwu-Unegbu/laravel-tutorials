@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\dashboard\PostController;
 use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\PublicPagesController;
@@ -34,13 +35,14 @@ Route::post('/dashboard/category/update/{categoryid}', [CategoryController::clas
 Route::get('/dashboard/post/create', [PostController::class, 'create'])->name('post.create');
 Route::post('/dashboard/post/create', [PostController::class, 'store'])->name('post.store');
 
+
+
 Route::get('/', [ PublicPagesController::class, 'posts'])->name('posts.public');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/comment', [InteractionController::class, 'storeComment'])->name('comment')->middleware(['auth']);
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';
