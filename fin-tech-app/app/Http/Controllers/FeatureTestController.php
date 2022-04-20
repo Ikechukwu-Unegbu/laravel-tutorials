@@ -11,8 +11,9 @@ class FeatureTestController extends Controller
 {
     public function emailSendingWithQueu(){
         $details['email'] = 'iunegbu94@yahoo.com';
+        $userVariable = ['name'=>'Ikechukwu Vincent'];
         // $mail = new notifyMail();
         // Mail::to('iunegbu94@yahoo.com')->send($mail);
-        dispatch(new SendEmailJob($details));
+        dispatch(new SendEmailJob($details,$userVariable));
     }
 }
