@@ -15,7 +15,7 @@ class PublicPagesController extends Controller
         $posts = Post::paginate(12);
         $categories = Category::all();
         foreach($posts as $post){
-            $truncated = Str::words($post->body, 50);
+            $truncated = Str::words($post->body, 15);
             $post->body = $truncated;
         }
         return view('pages.posts.index')

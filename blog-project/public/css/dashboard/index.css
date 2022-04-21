@@ -1,0 +1,46 @@
+.container-dash{
+  display: flex;
+  /* height: 100vh; */
+}
+
+.container-right{
+  width: 70%;
+
+}
+
+.container-left{
+  width: 30%;
+  background-color: whitesmoke;
+  box-shadow: 0 0 6px rgb(202, 202, 202);
+}
+
+.ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1.4rem;
+}
+
+.container-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 2rem;
+  align-items: center;
+  /* padding-top: 10rem; */
+}
+
+.dashboard-blog_holder{
+  /* margin-top: 10rem; */
+}
+
+.dashboard-nav{
+
+}
+
+.dashboard-nav a{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  /* font-size: larger; */
+}
