@@ -29,6 +29,9 @@
       <input type="text" name="search_term" class="col-6 form-control">
       <button class="btn col-3">Search</button>
     </form>
+    <div class="mt-4 mb-4 container col-12">
+      <a style="margin-left: 4.5rem;" href="{{route('post.create')}}" class="btn btn-sm btn-primary">Write New Post</a>
+    </div>
     <div class="dashboard-blog_holder">
       <!-- card begins -->
       @foreach($posts as $p)

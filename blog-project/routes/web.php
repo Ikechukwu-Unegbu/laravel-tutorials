@@ -39,6 +39,8 @@ Route::post('/comment', [InteractionController::class, 'storeComment'])->name('c
 Route::get('/dashboard/blog', [DashboardController::class, 'blogs'])->name('dashboard.blog')->middleware(['auth']);
 Route::post('/dashboard/search', [SearchController::class, 'adminSearchPosts'])->name('search.post.byAdmin')->middleware(['auth']);
 Route::get('/dashboard/blog/{slug}', [DashboardController::class, 'showblog'])->name('blog.show')->middleware(['auth']);
+Route::get('/dashboard/posts/comments', [DashboardController::class, 'commentsIndex'])->name('comment.index')->middleware(['auth']);
+Route::get('comment/toggle/{comid}/{state}', [DashboardController::class, 'togglecomment'])->name('comment.toggle')->middleware(['auth']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
 

@@ -2,11 +2,17 @@
 
 @section('head')
 <title>Admin|Category</title>
+<link rel="stylesheet" href="{{asset('css\dashboard\index.css')}}">
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-dash">
+@include('dashboard\partials\_dashboard_nav')
+
+
+<div class="container-right">
 @include('partials._message')
+<a href="{{route('category.store')}}" style="float: right;" class="btn mt-4 btn-sm btn-primary">Add New Category</a>
 <table class="table mt-4">
   <thead>
     <tr>
@@ -32,5 +38,6 @@
     @endforeach
   </tbody>
 </table>
+</div>
 </div>
 @endsection
