@@ -1,0 +1,29 @@
+{
+    "name": "hp/devdojo",
+    "description": "First package",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hp\\Devdojo\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hp\\Devdojo\\DevdojoServiceProvider"
+            ]
+        }
+    },
+
+    "authors": [
+        {
+            "name": "ikechukwu-unegbu",
+            "email": "iunegbu94@yahoo.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "7.1.0",
+        "phpunit/phpunit": "^9.5"
+    }
+}
